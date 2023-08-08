@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+let drawScore = 0;
+
 function getComputerChoice () {
     let randomNumber = Math.floor(3*Math.random()) + 1;
     let computerChoice = ""; 
@@ -19,23 +23,57 @@ let getPlayerChoice = () => prompt("Choose between: ROCK, PAPER or SCISSORS: ").
     
 
 function playRound(playerChoice, computerChoice){
-    if (playerChoice === computerChoice)
+    if (playerChoice === computerChoice) {
+
         console.log("Its a draw!")
+        drawScore ++;
+    }
     
-    else if (playerChoice === "ROCK" && computerChoice === "PAPER" )
+    else if (playerChoice === "ROCK" && computerChoice === "PAPER" ){
         console.log("You lose: "+ computerChoice + " beats " + playerChoice)
-    else if (playerChoice === "ROCK" && computerChoice === "SCISSORS" )
+        computerScore ++;
+    }
+       
+    else if (playerChoice === "ROCK" && computerChoice === "SCISSORS" ){
         console.log("You win: "+ playerChoice + " beats " + computerChoice)
-    else if (playerChoice === "PAPER" && computerChoice === "ROCK" )
+        playerScore ++;
+    }
+    else if (playerChoice === "PAPER" && computerChoice === "ROCK" ){
         console.log("You win: "+ playerChoice + " beats " + computerChoice)
-    else if (playerChoice === "PAPER" && computerChoice === "SCISSORS" )
+        playerScore ++;
+    }
+    else if (playerChoice === "PAPER" && computerChoice === "SCISSORS" ){
         console.log("You lose: "+ computerChoice + " beats " + playerChoice)
-    else if (playerChoice === "SCISSORS" && computerChoice === "PAPER" )
+        computerScore ++;
+    }
+    else if (playerChoice === "SCISSORS" && computerChoice === "PAPER" ){
         console.log("You win: "+ playerChoice + " beats " + computerChoice)
-    else if (playerChoice === "SCISSORS" && computerChoice === "ROCK" )
+        playerScore ++;
+    }
+    else if (playerChoice === "SCISSORS" && computerChoice === "ROCK" ){
         console.log("You lose: "+ computerChoice + " beats " + playerChoice)
+        computerScore ++;
+    }
     else
         console.log("ERROR!");
 }
 
-console.log(playRound(getPlayerChoice(), getComputerChoice()));
+function game(rounds){
+
+    for (let i = 0; i<rounds; i++){
+        playRound(getPlayerChoice(), getComputerChoice());        
+}
+    if (playerScore > computerScore){
+        console.log("Congrats you won!")
+        console.log(`You: ${playerScore} \nComputer: ${computerScore}\nDraws: ${drawScore}`)}
+    else if(playerScore < computerScore){2
+        console.log("You Lost!")
+        console.log(`You: ${playerScore} \nComputer: ${computerScore}\nDraws: ${drawScore}`)
+    }
+    else {
+        console.log("Tie!")    
+        console.log(`You: ${playerScore} \nComputer: ${computerScore}\nnDraws: ${drawScore}`)
+    }
+
+}
+console.log(game(5));
