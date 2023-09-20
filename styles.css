@@ -1,0 +1,57 @@
+/* Font Import */
+@font-face {
+  font-family: Arcade;
+  src: url(./assets/fonts/ARCADE.TTF);
+}
+/*Header */
+h3 {
+  font-family: Arcade;
+  font-size: 4em;
+  text-align: center;
+  color: white;
+}
+
+/* Background, font  and color */
+* {
+  background-color: black;
+  color: white;
+  font-family: Arcade;
+}
+h3:hover {
+  color: grey;
+}
+.btn:hover {
+  border: 0.3rem solid green;
+}
+
+p {
+  font-size: 2em;
+}
+
+/* Score Cards */
+#score {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.scoreCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scoreCardsPoints {
+  margin-top: 0.2em;
+  font-size: 4em;
+}
+/* Buttons */
+#gameButtons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn {
+  width: 12em;
+  height: 9em;
+  border: 0.3rem solid white;
+  padding: 1rem;
+}
