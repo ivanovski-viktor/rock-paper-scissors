@@ -18,37 +18,32 @@ function getComputerChoice() {
     default:
       computerChoice = "ERROR!";
   }
-  console.log("Computer Chose: " + computerChoice);
+  const updateComputerChoice = () => {
+    computerChoicePara.textContent = computerChoice;
+  };
+  updateComputerChoice();
   return computerChoice;
 }
-
-// let getPlayerChoice = () =>
-//   prompt("Choose between: ROCK, PAPER or SCISSORS: ").toUpperCase();
-
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
-    console.log("Its a draw!");
     draw_score++;
-    console.log("Draws>", draw_score);
+    updateScore();
   } else if (
     (playerChoice === "ROCK" && computerChoice === "PAPER") ||
     (playerChoice === "PAPER" && computerChoice === "SCISSORS") ||
     (playerChoice === "SCISSORS" && computerChoice === "ROCK")
   ) {
-    console.log("You lose: " + playerChoice + " loses to " + computerChoice);
     computer_score++;
-    console.log("Computer>", computer_score);
+    updateScore();
   } else if (
     (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
     (playerChoice === "PAPER" && computerChoice === "ROCK") ||
     (playerChoice === "SCISSORS" && computerChoice === "PAPER")
   ) {
-    console.log("You win: " + playerChoice + " beats " + computerChoice);
     player_score++;
-    console.log("Player>", player_score);
+    updateScore();
   } else console.log("ERROR!");
 }
-
 // function game(rounds) {
 //   for (let i = 0; i < rounds; i++) {
 //     playRound(getPlayerChoice(), getComputerChoice());
@@ -72,14 +67,25 @@ function playRound(playerChoice, computerChoice) {
 //   }
 // }
 // console.log(game(5));
+function updateScore() {
+  playerScore.textContent = player_score;
+  drawScore.textContent = draw_score;
+  computerScore.textContent = computer_score;
+}
 
+/*Referencing HTML IDS*/
 let paperBtn = document.getElementById("paperBtn");
 let rockBtn = document.getElementById("rockBtn");
 let scissorsBtn = document.getElementById("scissorsBtn");
-console.log("rockBtn", rockBtn);
-console.log("paperBtn", paperBtn);
-console.log("scissorsBtn", paperBtn);
 
+let playerScore = document.getElementById("playerScore");
+let drawScore = document.getElementById("drawScore");
+let computerScore = document.getElementById("computerScore");
+let computerChoicePara = document.getElementById("computerChoicePara");
+
+/* Updating visual score */
+
+/* Player choice when clicking */
 rockBtn.addEventListener("click", function () {
   playRound("ROCK", getComputerChoice());
 });
@@ -89,3 +95,4 @@ paperBtn.addEventListener("click", () =>
 scissorsBtn.addEventListener("click", () =>
   playRound("SCISSORS", getComputerChoice())
 );
+updateScore();
